@@ -8,7 +8,9 @@
           :fetch-suggestions="querySearch"
           placeholder="请输入内容"
           :trigger-on-focus="false"
+          ref="input"
           @select="handleSelect"
+          @keyup.enter.native="handleEnter"
           style="width:45%;"
         ></el-autocomplete>
         <el-button
@@ -17,9 +19,7 @@
           style="margin-left: 25px;"
           @click="addTag"
         >搜索</el-button>
-        <br />
-        <br />
-        <div style="background-color: #ffffff">最近访问：<Tag :value="tagValue"></Tag></div>
+        <div style="margin-top:9px;background-color: #ffffff">最近访问：<Tag :value="tagValue"></Tag></div>
         <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
           <el-menu-item index="1">
             <router-link :to="{name: 'imageList'}" style="text-decoration:none;">
@@ -59,7 +59,6 @@ export default {
       restaurants: [],
       tagValue: "",
       state: ""
-      // activeIndex: "1"
     };
   },
   methods: {
@@ -94,14 +93,37 @@ export default {
       });
       return this.restaurant;
     },
-    handleSelect(item) {
-      //alert(item);
+    handleEnter() {
+      if (this.state !== "") {
+        this.tagValue = this.state;
+        this.ancherTag(this.state);
+        this.state="";
+      }
+    },
+    handleSelect(){
+      this.$refs['input'].focus();
     },
     addTag() {
       if (this.state !== "") {
         this.tagValue = this.state;
+        this.ancherTag(this.state);
         this.state="";
       }
+    },
+    ancherTag(tag){
+      var type=tag.substring(tag.lastIndexOf('(')+1,tag.lastIndexOf(')'));
+      switch(type){
+        case '图片' : 
+        this.$router.push({ name: "imageList" });
+        break;
+        case '音乐' : 
+        this.$router.push({ name: "musicList" });
+        break;
+        case '视频' : 
+        this.$router.push({ name: "videoList" });
+        break;
+        default : break;
+      } 
     }
   },
   mounted() {
@@ -117,6 +139,7 @@ export default {
   height: auto;
   left: 0px;
   top: 0px;
+  padding-top: 10px;
   background-color: #ffffff;
   z-index: 100;
   flex-flow: row nowrap;

@@ -1,4 +1,4 @@
-import Vue from 'vue'
+﻿import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../views/Login.vue'
 import Home from '../views/Home.vue'
@@ -70,8 +70,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-   
+  mode: 'hash',
   base: process.env.BASE_URL,
   linkActiveClass:'active',
   routes

@@ -3,61 +3,41 @@
     <br />
     <el-upload
       class="upload-demo"
-      ref="upload"
+      drag
+      enctype="multipart/form-data"
       action="/api/springboot/upload"
-      :on-preview="handlePreview"
-      :on-remove="handleRemove"
       :on-success="success"
       :file-list="fileList"
-      :auto-upload="false"
-      :data="{uploadPath,uploadPath}"
-      accept=".jpg,.png"
+      accept=".jpg, .png"
       list-type="picture"
+      multiple
     >
-      <el-button slot="trigger" size="small" type="primary">选取图片</el-button>
-      <el-button style="margin-left: 10px;" size="small" type="success" plain @click="submitUpload">上传<i class="el-icon-upload el-icon--right"></i></el-button>
-      <br />
-      <uploadPath type1="图片" @func="getMsgFormSon"></uploadPath>
-      <div slot="tip" class="el-upload__tip">支持上传jpg/png文件，且不超过500kb</div>
+      <i class="el-icon-upload"></i>
+      <div class="el-upload__text">
+        将文件拖到此处，或
+        <em>点击上传</em>
+      </div>
+      <div class="el-upload__tip" slot="tip">只能上传.jpg/.png文件，且不超过500kb</div>
     </el-upload>
   </div>
 </template>
 
 <script>
-import uploadPath from "@/components/uploadPath";
-
 export default {
   name: "Image",
-  components: {
-    uploadPath
-  },
   data() {
     return {
-      fileList: [],
-      upload:'',
-      uploadPath:''
+      fileList: []
     };
   },
   methods: {
-    submitUpload(file) {
-      this.$refs.upload.submit();
-    },
-    success(){
+    success() {
       this.$notify({
         title: "上传成功",
         type: "success",
-        position: 'top-right',
+        position: "top-right",
         offset: 250
       });
-    },
-    handleRemove(file, fileList) {
-      console.log(file, fileList);
-    },
-    handlePreview(file) {
-      upload=this.file;
-    },
-    getMsgFormSon(data){
-      this.uploadPath=data;
     }
   }
 };

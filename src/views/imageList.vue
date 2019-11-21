@@ -64,10 +64,9 @@ export default {
   padding: 10px 0 0 15px;
 }
 .pic{
-  padding: 10px;
+  padding: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 5px #ccc;
-  width: 165px;
 }
 </style>

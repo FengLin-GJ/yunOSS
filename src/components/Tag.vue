@@ -6,7 +6,7 @@
       closable
       :disable-transitions="false"
       @close="handleClose(tag)"
-    ><span @click="test(tag)" style="cursor:pointer;">{{tag}}</span></el-tag>
+    ><span @click="ancherTag(tag)" style="cursor:pointer;">{{tag}}</span></el-tag>
   </span>
 </template>
 
@@ -23,7 +23,7 @@ export default {
     handleClose(tag) {
       this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
     },
-    test(tag){
+    ancherTag(tag){
       var type=tag.substring(tag.lastIndexOf('(')+1,tag.lastIndexOf(')'));
       switch(type){
         case '图片' : 
