@@ -25,7 +25,7 @@ export default {
 <style scoped lang="scss">
  .card img{
   display: block;
-  width:160.2px;
+  width:140.2px;
   height: auto;
 }
 </style>

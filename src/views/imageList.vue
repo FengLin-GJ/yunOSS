@@ -57,11 +57,10 @@ export default {
   column-gap: 5px;
   position: relative;
   float: left;
-  /* margin-top: 120px; */
 }
 .box {
   float: left;
-  padding: 10px 0 0 15px;
+  padding: 10px 0 0 10px;
 }
 .pic{
   padding: 5px;

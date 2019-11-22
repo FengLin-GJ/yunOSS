@@ -1,6 +1,6 @@
 <template>
   <div>
-     <img src="https://test-bucket-s.oss-cn-zhangjiakou.aliyuncs.com/Image/%E5%93%88%E5%93%88.jpg" alt=""> 
+     <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=801623357,2126754963&fm=15&gp=0.jpg" alt=""> 
   </div>
 </template>
 

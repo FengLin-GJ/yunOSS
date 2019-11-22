@@ -7,10 +7,12 @@
       enctype="multipart/form-data"
       action="/api/springboot/upload"
       :on-success="success"
+      :on-progress="openFullScreen"
       :file-list="fileList"
       accept=".jpg, .png"
       list-type="picture"
       multiple
+      v-loading.fullscreen.lock="fullscreenLoading"
     >
       <i class="el-icon-upload"></i>
       <div class="el-upload__text">
@@ -27,7 +29,8 @@ export default {
   name: "Image",
   data() {
     return {
-      fileList: []
+      fileList: [],
+      fullscreenLoading: false
     };
   },
   methods: {
@@ -38,6 +41,12 @@ export default {
         position: "top-right",
         offset: 250
       });
+    },
+    openFullScreen(){
+      this.fullscreenLoading = true;
+        setTimeout(() => {
+          this.fullscreenLoading = false;
+        }, 2000);
     }
   }
 };
