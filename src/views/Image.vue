@@ -7,9 +7,8 @@
       enctype="multipart/form-data"
       action="/api/springboot/upload"
       :on-success="success"
-      :on-progress="openFullScreen"
       :file-list="fileList"
-      accept=".jpg, .png"
+      accept=".jpg,.png,bmp,.jpeg,.gif,.psd,.tiff,.tga,.svg"
       list-type="picture"
       multiple
       v-loading.fullscreen.lock="fullscreenLoading"
@@ -19,7 +18,7 @@
         将文件拖到此处，或
         <em>点击上传</em>
       </div>
-      <div class="el-upload__tip" slot="tip">只能上传.jpg/.png文件，且不超过500kb</div>
+      <div class="el-upload__tip" slot="tip">只能上传.jpg,.png,bmp,.jpeg,.gif,.psd,.tiff,.tga,.svg文件，且不超过500kb</div>
     </el-upload>
   </div>
 </template>
@@ -29,8 +28,7 @@ export default {
   name: "Image",
   data() {
     return {
-      fileList: [],
-      fullscreenLoading: false
+      fileList: []
     };
   },
   methods: {
@@ -41,12 +39,6 @@ export default {
         position: "top-right",
         offset: 250
       });
-    },
-    openFullScreen(){
-      this.fullscreenLoading = true;
-        setTimeout(() => {
-          this.fullscreenLoading = false;
-        }, 2000);
     }
   }
 };

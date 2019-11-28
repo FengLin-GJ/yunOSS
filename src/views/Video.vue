@@ -7,7 +7,6 @@
       enctype="multipart/form-data"
       action="/api/springboot/upload"
       :on-success="success"
-      :on-progress="openFullScreen"
       :file-list="fileList"
       accept=".mp4"
       list-type="picture"
@@ -29,8 +28,7 @@ export default {
   name: "Video",
   data() {
     return {
-      fileList: [],
-      fullscreenLoading: false
+      fileList: []
     };
   },
   methods: {
@@ -41,13 +39,7 @@ export default {
         position: "top-right",
         offset: 250
       });
-    },
-    openFullScreen(){
-      this.fullscreenLoading = true;
-        setTimeout(() => {
-          this.fullscreenLoading = false;
-        }, 2000);
-    }
+    } 
   }
 };
 </script>

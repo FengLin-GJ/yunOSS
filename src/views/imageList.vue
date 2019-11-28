@@ -1,21 +1,19 @@
 <template>
   <div id="main">
-    <div v-for="(item,index) in file" :key="index" class="box">
-      <div class="pic">
-        <Card :url="item.path" :title="item.file_name"></Card>
+    <viewer :images="file">
+      <div class="box" v-for="(item,index) in file" :key="index">
+        <div class="pic">
+          <img :src="item.path" :onerror="errorImg" />
+        </div>
       </div>
-    </div>
+    </viewer>
   </div>
 </template>
 
 <script>
-import Card from "@/components/Card";
 
 export default {
   name: "imageList",
-  components: {
-    Card
-  },
   data() {
     return {
       file: ""
@@ -45,27 +43,22 @@ export default {
   -o-column-width: 202px;
   -ms-column-width: 202px;
   column-width: 202px;
-  -webkit-column-rule: 2px dashed rgb(170, 180, 187);
-  -moz-column-rule: 2px dashed rgb(170, 180, 187);
-  -o-column-rule: 2px dashed rgb(170, 180, 187);
-  -ms-column-rule: 2px dashed rgb(170, 180, 187);
-  column-rule: 2px dashed rgb(170, 180, 187);
-  -webkit-column-gap: 5px;
-  -moz-column-gap: 5px;
-  -o-column-gap: 5px;
-  -ms-column-gap: 5px;
-  column-gap: 5px;
   position: relative;
-  float: left;
 }
 .box {
   float: left;
-  padding: 10px 0 0 10px;
+  padding: 15px 0 0 15px;
 }
-.pic{
-  padding: 5px;
+.pic {
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 5px #ccc;
+  width: 165px;
+}
+.pic img {
+  display: block;
+  width: 165px;
+  height: auto;
 }
 </style>
